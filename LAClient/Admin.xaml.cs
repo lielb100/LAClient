@@ -63,7 +63,7 @@ namespace LAClient
         private void MenuItem_Update(object sender, RoutedEventArgs e)
         {
             user = lstView2.SelectedItem as User;
-            var updatePU = new ProfilePU(user);
+            var updatePU = new ProfilePU(user, this);
             updatePU.ShowDialog();
         }
 
