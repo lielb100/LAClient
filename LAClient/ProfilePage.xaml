@@ -1,0 +1,61 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:LAClient"
+    d:DataContext="{d:DesignInstance Type=local:UserImageDC}"
+      x:Class="LAClient.ProfilePage"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProfilePage">
+
+    <Page.Resources>
+        <local:ImageConverter x:Key="imageConverter" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="107*" />
+            <ColumnDefinition Width="52*" />
+            <ColumnDefinition Width="98*" />
+            <ColumnDefinition Width="143*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock FontSize=" 20" Grid.Row="0"> First Name:</TextBlock>
+        <TextBlock FontSize=" 20" Grid.Row="1"> Last Name:</TextBlock>
+        <TextBlock FontSize=" 20" Grid.Row="2"> Sex:</TextBlock>
+        <TextBlock FontSize=" 20" Grid.Row="3"> Preference:</TextBlock>
+        <TextBlock FontSize=" 20" Grid.Row="4"> Telephone:</TextBlock>
+
+        <TextBox FontSize=" 20" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Text="{Binding TheUser.Fname}" />
+        <TextBox FontSize=" 20" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding TheUser.Lname}" />
+        <ComboBox x:Name="SexBox" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" DisplayMemberPath="GenName"
+                  SelectedItem="{Binding TheUser.Sex}"  SelectionChanged="SexBox_SelectionChanged" />
+        <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" DisplayMemberPath="PGenName"
+                  SelectedItem="{Binding TheUser.Preference}" Name="PreferenceBox" SelectionChanged="PreBox_SelectionChanged" />
+
+        <ComboBox x:Name="AreaCodeBox" Grid.Row="4" Grid.Column="1" DisplayMemberPath="CodeNum" SelectedItem="{Binding TheUser.AreaCode}" />
+        <TextBox FontSize=" 20" Grid.Column="2" Grid.Row="4" Text="{Binding TheUser.Phone}" Margin="10" />
+
+        <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7" Name="upd" Margin="10" Content="Update" FontSize=" 20" Click="Button_Click" />
+        <Image x:Name="ServerImage" Source="{Binding TheImage, Converter={StaticResource imageConverter}}" Grid.Column="3" Grid.RowSpan="4" />
+        <Image x:Name="NewImage" Source="{Binding NewFile, Converter={StaticResource imageConverter}}" Grid.Column="3" Grid.RowSpan="4" Visibility="Collapsed" />
+        <Button Width="50" Background="Transparent"  Grid.Row="4" HorizontalAlignment="Center"  ToolTip="Replace Image" Click="Button_Click_1" Grid.Column="3">
+            <Button.Content>
+                <Image Source="Assets/Img.png" />
+            </Button.Content>
+        </Button>
+    </Grid>
+</Page>

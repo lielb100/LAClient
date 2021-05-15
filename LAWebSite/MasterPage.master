@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<link rel="shortcut icon" type="image/x-icon" href="~/Images/1606945478623.ico" />
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <style>
+            img {
+                height: 25%;
+                width: 25%;
+            }
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+            }
+
+            li {
+                float: left;
+            }
+
+                li a {
+                    display: block;
+                    background-color: black;
+                    color: #E50914;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                }
+
+                    li a:hover:not(.active) {
+                        background-color: #6C6B6B;
+                    }
+
+            a.active {
+                background-color: #C10303;
+                color: black;
+            }
+
+            .active:hover {
+                background-color: #f41616;
+                color: black;
+            }
+        </style>
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <table width="100%">
+
+            <tr colspan="1">
+                <td>
+                    <img src="Images/AppBanner.png" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+                <td width="30%"><% =menu%></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

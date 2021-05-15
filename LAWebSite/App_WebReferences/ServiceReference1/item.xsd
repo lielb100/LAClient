@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="UserList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserList" nillable="true" type="tns:UserList" />
+  <xs:complexType name="User">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Age" type="xs:int" />
+          <xs:element minOccurs="0" name="AreaCode" nillable="true" type="tns:AreaCode" />
+          <xs:element minOccurs="0" name="BirthDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Checked1" type="xs:boolean" />
+          <xs:element minOccurs="0" name="DeviceID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ext_Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ext_Type" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Fname" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Friendships" nillable="true" type="tns:UserList" />
+          <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Images" nillable="true" type="tns:ImageList" />
+          <xs:element minOccurs="0" name="Info" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Interests" nillable="true" type="tns:InterestList" />
+          <xs:element minOccurs="0" name="IsVer" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Lname" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Manager" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Preference" nillable="true" type="tns:Preference" />
+          <xs:element minOccurs="0" name="Seen" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Sex" nillable="true" type="tns:Sex" />
+          <xs:element minOccurs="0" name="Values" nillable="true" type="tns:ValueList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="BaseEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseEntity" nillable="true" type="tns:BaseEntity" />
+  <xs:complexType name="AreaCode">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodeNum" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AreaCode" nillable="true" type="tns:AreaCode" />
+  <xs:complexType name="ImageList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Image" nillable="true" type="tns:Image" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImageList" nillable="true" type="tns:ImageList" />
+  <xs:complexType name="Image">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+          <xs:element minOccurs="0" name="Img" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Type" type="xs:int" />
+          <xs:element minOccurs="0" name="Userr" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Image" nillable="true" type="tns:Image" />
+  <xs:complexType name="InterestList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Interest" nillable="true" type="tns:Interest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InterestList" nillable="true" type="tns:InterestList" />
+  <xs:complexType name="Interest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+          <xs:element minOccurs="0" name="InterestName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Interest" nillable="true" type="tns:Interest" />
+  <xs:complexType name="Preference">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+          <xs:element minOccurs="0" name="PGenName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Preference" nillable="true" type="tns:Preference" />
+  <xs:complexType name="Sex">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GenName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Sex" nillable="true" type="tns:Sex" />
+  <xs:complexType name="ValueList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Value" nillable="true" type="tns:Value" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ValueList" nillable="true" type="tns:ValueList" />
+  <xs:complexType name="Value">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+          <xs:element minOccurs="0" name="UserID" type="xs:int" />
+          <xs:element minOccurs="0" name="ValueName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Value" nillable="true" type="tns:Value" />
+  <xs:complexType name="SexList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sex" nillable="true" type="tns:Sex" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SexList" nillable="true" type="tns:SexList" />
+  <xs:complexType name="PreferenceList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Preference" nillable="true" type="tns:Preference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PreferenceList" nillable="true" type="tns:PreferenceList" />
+  <xs:complexType name="FriendsMeetingList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FriendsMeeting" nillable="true" type="tns:FriendsMeeting" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FriendsMeetingList" nillable="true" type="tns:FriendsMeetingList" />
+  <xs:complexType name="FriendsMeeting">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Fid" type="xs:int" />
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+          <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FriendsMeeting" nillable="true" type="tns:FriendsMeeting" />
+</xs:schema>

@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfServiceLibraryLA/Service1/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfServiceLibraryLA/Service1/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WcfServiceLibraryLA/Service1/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Model" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_SaveImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImage" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImage" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SelectAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SelectAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserByEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByEmail" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserByEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CheckLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckLogin" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CheckLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserByGuid_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByGuid" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUserByGuid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByGuidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RegiserUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegiserUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RegiserUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegiserUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveChanges_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveChanges" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveChanges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveChangesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Insert_InputMessage">
+    <wsdl:part name="parameters" element="tns:Insert" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Insert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllSexes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSexes" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllSexes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSexesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSexByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSexByID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSexByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSexByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllPreferences_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPreferences" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllPreferences_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPreferencesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPreferenceByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPreferenceByID" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPreferenceByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPreferenceByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllRequestedByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRequestedByUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllRequestedByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRequestedByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllFriendsByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFriendsByUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllFriendsByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFriendsByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllFriendshipsByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFriendshipsByUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllFriendshipsByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFriendshipsByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllMeetingsByUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMeetingsByUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllMeetingsByUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMeetingsByUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OnMeetingNewAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:OnMeetingNewAddress" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OnMeetingNewAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OnMeetingNewAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetNewFriedshipMeeting_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetNewFriedshipMeeting" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetNewFriedshipMeeting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetNewFriedshipMeetingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeclineRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeclineRequest" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeclineRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeclineRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Friend_InputMessage">
+    <wsdl:part name="parameters" element="tns:Friend" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Friend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FriendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CheckFollowState_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckFollowState" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CheckFollowState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckFollowStateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="SaveImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SaveImage" message="tns:IService1_SaveImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SaveImageResponse" message="tns:IService1_SaveImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetImage" message="tns:IService1_GetImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetImageResponse" message="tns:IService1_GetImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SelectAllUsers" message="tns:IService1_SelectAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SelectAllUsersResponse" message="tns:IService1_SelectAllUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserByID" message="tns:IService1_GetUserByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserByIDResponse" message="tns:IService1_GetUserByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserByEmail" message="tns:IService1_GetUserByEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserByEmailResponse" message="tns:IService1_GetUserByEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CheckLogin" message="tns:IService1_CheckLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CheckLoginResponse" message="tns:IService1_CheckLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByGuid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserByGuid" message="tns:IService1_GetUserByGuid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserByGuidResponse" message="tns:IService1_GetUserByGuid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegiserUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RegiserUser" message="tns:IService1_RegiserUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RegiserUserResponse" message="tns:IService1_RegiserUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateUser" message="tns:IService1_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateUserResponse" message="tns:IService1_UpdateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveChanges">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SaveChanges" message="tns:IService1_SaveChanges_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SaveChangesResponse" message="tns:IService1_SaveChanges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Insert" message="tns:IService1_Insert_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertResponse" message="tns:IService1_Insert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteUser" message="tns:IService1_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteUserResponse" message="tns:IService1_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSexes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllSexes" message="tns:IService1_GetAllSexes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllSexesResponse" message="tns:IService1_GetAllSexes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSexByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetSexByID" message="tns:IService1_GetSexByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetSexByIDResponse" message="tns:IService1_GetSexByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPreferences">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllPreferences" message="tns:IService1_GetAllPreferences_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllPreferencesResponse" message="tns:IService1_GetAllPreferences_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreferenceByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPreferenceByID" message="tns:IService1_GetPreferenceByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPreferenceByIDResponse" message="tns:IService1_GetPreferenceByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRequestedByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllRequestedByUser" message="tns:IService1_GetAllRequestedByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllRequestedByUserResponse" message="tns:IService1_GetAllRequestedByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFriendsByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllFriendsByUser" message="tns:IService1_GetAllFriendsByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllFriendsByUserResponse" message="tns:IService1_GetAllFriendsByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFriendshipsByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllFriendshipsByUser" message="tns:IService1_GetAllFriendshipsByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllFriendshipsByUserResponse" message="tns:IService1_GetAllFriendshipsByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMeetingsByUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllMeetingsByUsers" message="tns:IService1_GetAllMeetingsByUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllMeetingsByUsersResponse" message="tns:IService1_GetAllMeetingsByUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnMeetingNewAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/OnMeetingNewAddress" message="tns:IService1_OnMeetingNewAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/OnMeetingNewAddressResponse" message="tns:IService1_OnMeetingNewAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetNewFriedshipMeeting">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetNewFriedshipMeeting" message="tns:IService1_SetNewFriedshipMeeting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetNewFriedshipMeetingResponse" message="tns:IService1_SetNewFriedshipMeeting_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeclineRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeclineRequest" message="tns:IService1_DeclineRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeclineRequestResponse" message="tns:IService1_DeclineRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Friend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Friend" message="tns:IService1_Friend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/FriendResponse" message="tns:IService1_Friend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckFollowState">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CheckFollowState" message="tns:IService1_CheckFollowState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CheckFollowStateResponse" message="tns:IService1_CheckFollowState_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveImage">
+      <soap:operation soapAction="http://tempuri.org/IService1/SaveImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImage">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SelectAllUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/SelectAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByID">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByEmail">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserByEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckLogin">
+      <soap:operation soapAction="http://tempuri.org/IService1/CheckLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByGuid">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUserByGuid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegiserUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/RegiserUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveChanges">
+      <soap:operation soapAction="http://tempuri.org/IService1/SaveChanges" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert">
+      <soap:operation soapAction="http://tempuri.org/IService1/Insert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSexes">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllSexes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSexByID">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetSexByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPreferences">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllPreferences" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreferenceByID">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPreferenceByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRequestedByUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllRequestedByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFriendsByUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllFriendsByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFriendshipsByUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllFriendshipsByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMeetingsByUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllMeetingsByUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnMeetingNewAddress">
+      <soap:operation soapAction="http://tempuri.org/IService1/OnMeetingNewAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNewFriedshipMeeting">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetNewFriedshipMeeting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeclineRequest">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeclineRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Friend">
+      <soap:operation soapAction="http://tempuri.org/IService1/Friend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckFollowState">
+      <soap:operation soapAction="http://tempuri.org/IService1/CheckFollowState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WcfServiceLibraryLA/Service1/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
