@@ -103,6 +103,18 @@
   <wsdl:message name="IService1_GetPreferenceByID_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPreferenceByIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetAllAreaCodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAreaCodes" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllAreaCodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAreaCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAreaCodeById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAreaCodeById" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAreaCodeById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAreaCodeByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_GetAllRequestedByUser_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllRequestedByUser" />
   </wsdl:message>
@@ -221,6 +233,14 @@
     <wsdl:operation name="GetPreferenceByID">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPreferenceByID" message="tns:IService1_GetPreferenceByID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPreferenceByIDResponse" message="tns:IService1_GetPreferenceByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAreaCodes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllAreaCodes" message="tns:IService1_GetAllAreaCodes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllAreaCodesResponse" message="tns:IService1_GetAllAreaCodes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaCodeById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAreaCodeById" message="tns:IService1_GetAreaCodeById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAreaCodeByIdResponse" message="tns:IService1_GetAreaCodeById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllRequestedByUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllRequestedByUser" message="tns:IService1_GetAllRequestedByUser_InputMessage" />
@@ -398,6 +418,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetPreferenceByID">
       <soap:operation soapAction="http://tempuri.org/IService1/GetPreferenceByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAreaCodes">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllAreaCodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAreaCodeById">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAreaCodeById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

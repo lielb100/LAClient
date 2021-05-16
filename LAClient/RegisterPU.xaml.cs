@@ -63,9 +63,9 @@ namespace LAClient
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string msg = string.Empty;
-            if (ValidatorHelper.IsValidEmail(xx.TheUser.Email)) msg += "Email Is Not Valid\n";
-            if (ValidatorHelper.IsValidPassword(xx.TheUser.Password)) msg += "Password Is Not Valid\n";
-            if (ValidatorHelper.IsValidPhone(xx.TheUser.Phone)) msg += "Phone Number Is Not Valid";
+            if (!ValidatorHelper.IsValidEmail(xx.TheUser.Email)) msg += "Email Is Not Valid\n";
+            if (!ValidatorHelper.IsValidPassword(xx.TheUser.Password)) msg += "Password Is Not Valid\n";
+            if (!ValidatorHelper.IsValidPhone(xx.TheUser.Phone)) msg += "Phone Number Is Not Valid";
 
             if (msg != string.Empty)
             {

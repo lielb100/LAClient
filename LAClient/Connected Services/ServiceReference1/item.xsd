@@ -125,6 +125,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PreferenceList" nillable="true" type="tns:PreferenceList" />
+  <xs:complexType name="AreaCodeList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AreaCode" nillable="true" type="tns:AreaCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AreaCodeList" nillable="true" type="tns:AreaCodeList" />
   <xs:complexType name="FriendshipList">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Friendship" nillable="true" type="tns:Friendship" />

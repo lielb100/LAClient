@@ -847,6 +847,13 @@ namespace LAClient.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="AreaCodeList", Namespace="http://schemas.datacontract.org/2004/07/Model", ItemName="AreaCode")]
+    [System.SerializableAttribute()]
+    public class AreaCodeList : System.Collections.Generic.List<LAClient.ServiceReference1.AreaCode> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="FriendshipList", Namespace="http://schemas.datacontract.org/2004/07/Model", ItemName="Friendship")]
     [System.SerializableAttribute()]
     public class FriendshipList : System.Collections.Generic.List<LAClient.ServiceReference1.Friendship> {
@@ -958,6 +965,18 @@ namespace LAClient.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPreferenceByID", ReplyAction="http://tempuri.org/IService1/GetPreferenceByIDResponse")]
         System.Threading.Tasks.Task<LAClient.ServiceReference1.Preference> GetPreferenceByIDAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllAreaCodes", ReplyAction="http://tempuri.org/IService1/GetAllAreaCodesResponse")]
+        LAClient.ServiceReference1.AreaCodeList GetAllAreaCodes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllAreaCodes", ReplyAction="http://tempuri.org/IService1/GetAllAreaCodesResponse")]
+        System.Threading.Tasks.Task<LAClient.ServiceReference1.AreaCodeList> GetAllAreaCodesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAreaCodeById", ReplyAction="http://tempuri.org/IService1/GetAreaCodeByIdResponse")]
+        LAClient.ServiceReference1.AreaCode GetAreaCodeById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAreaCodeById", ReplyAction="http://tempuri.org/IService1/GetAreaCodeByIdResponse")]
+        System.Threading.Tasks.Task<LAClient.ServiceReference1.AreaCode> GetAreaCodeByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllRequestedByUser", ReplyAction="http://tempuri.org/IService1/GetAllRequestedByUserResponse")]
         LAClient.ServiceReference1.UserList GetAllRequestedByUser(LAClient.ServiceReference1.User user);
@@ -1167,6 +1186,22 @@ namespace LAClient.ServiceReference1 {
         
         public System.Threading.Tasks.Task<LAClient.ServiceReference1.Preference> GetPreferenceByIDAsync(int id) {
             return base.Channel.GetPreferenceByIDAsync(id);
+        }
+        
+        public LAClient.ServiceReference1.AreaCodeList GetAllAreaCodes() {
+            return base.Channel.GetAllAreaCodes();
+        }
+        
+        public System.Threading.Tasks.Task<LAClient.ServiceReference1.AreaCodeList> GetAllAreaCodesAsync() {
+            return base.Channel.GetAllAreaCodesAsync();
+        }
+        
+        public LAClient.ServiceReference1.AreaCode GetAreaCodeById(int id) {
+            return base.Channel.GetAreaCodeById(id);
+        }
+        
+        public System.Threading.Tasks.Task<LAClient.ServiceReference1.AreaCode> GetAreaCodeByIdAsync(int id) {
+            return base.Channel.GetAreaCodeByIdAsync(id);
         }
         
         public LAClient.ServiceReference1.UserList GetAllRequestedByUser(LAClient.ServiceReference1.User user) {
