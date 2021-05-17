@@ -9,6 +9,12 @@
       Title="LoginPage">
 
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF1263DA" Offset="0"/>
+                <GradientStop Color="#FF92D4F1" Offset="0.859"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
@@ -16,32 +22,59 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="0.5*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0"
+        <TextBlock Grid.Row="0"  Grid.ColumnSpan="4"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   FontSize="25"
-                   Text="Login" />
+                   FontSize="48" 
+                   Text="Login" Foreground="White" FontWeight="Bold" />
+        <Image Source="/Assets/BlueLOGO.jpeg" Grid.Column="3" />
+        <TextBlock Text="Email" Foreground="White" FontWeight="Bold" FontSize="28" VerticalAlignment="Center"
+                 Grid.Row="1" Grid.Column="1" Margin="10"    />
+        <TextBlock Text="Password"  Foreground="White" FontWeight="Bold" FontSize="28" VerticalAlignment="Center"
+                     Grid.Row="2"  Grid.Column="1"  Margin="10"       />
         <TextBox x:Name="emailbox"
-                 Grid.Row="1"
-                 Text=""
-                 TextWrapping="Wrap" Margin="306,19.6,302,23.8" />
+                 Grid.Row="1" Grid.Column="2" Margin="10"    />
         <PasswordBox x:Name="passbox"
-                     Grid.Row="2"
-                     Password="" Margin="308,26.2,292,16.4" />
+                     Grid.Row="2"  Grid.Column="2"  Margin="10"       />
+
         <Button x:Name="button"
-                Grid.Row="3"
-                Width="75"
+                Grid.Row="3" Grid.Column="1"  Grid.ColumnSpan="2"
+                Width="100"
                 Height="50"
+                FontWeight="Bold" FontSize="16"
                 Click="Button_Click"
-                Content="send" />
+                Content="send" >
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <TextBlock x:Name="textBlock"
-                   Grid.Row="4"
+                   Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
                    TextWrapping="Wrap"
                    Visibility="Hidden" />
         <Button x:Name="Navigatereg"
-                Content="Register"
-                Click="Navigatereg_Click" />
-        <Button x:Name="fillbttn" Click="fillbttn_Click" Content="Fill" Grid.Row="4" />
+                Content="Register"  Grid.Row="3"   Width="100"
+                Height="50"
+                Click="Navigatereg_Click" FontWeight="Bold" FontSize="16"  VerticalAlignment="Center">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
+
+        <Button x:Name="fillbttn" Click="fillbttn_Click" Grid.Row="4" Grid.Column="3"
+                Background="Transparent" BorderBrush="Transparent"/>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace LAClient
 {
@@ -6,16 +7,26 @@ namespace LAClient
     {
         public static bool IsValidPassword(string password)
         {
-            if (password == null) return false;
-            Regex regex = new Regex(@"^(?=.*[A - Za - z])(?=.*\d)[A - Za - z\d]{ 8, }$");
-            return regex.IsMatch(password);
+            Regex hasNumber = new Regex(@"[0-9]+");
+            Regex hasUpperChar = new Regex(@"[A-Z]+");
+            Regex hasMinimum8Chars = new Regex(@".{8,}");
+
+             return hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password) && hasMinimum8Chars.IsMatch(password);
+
         }
 
         public static bool IsValidEmail(string email)
         {
-            if (email == null) return false;
-            Regex regex = new Regex(@"^([\w\.\-] +)@([\w\-] +)((\.(\w){ 2, 3 })+)$");
-            return regex.IsMatch(email);
+            try
+            {
+                MailAddress m = new MailAddress(email);
+                
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public static bool IsValidPhone(string phone)

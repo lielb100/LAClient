@@ -78,8 +78,8 @@ namespace LAClient
             xx.TheUser.Preference = PreferenceBox.SelectedItem as Preference;
 
             sr.RegiserUser(xx.TheUser);
+            //admin.ForceRefresh();
             this.Close();
-            admin.ForceRefresh();
         }
 
         private void SexBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

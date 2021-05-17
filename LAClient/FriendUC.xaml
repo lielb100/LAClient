@@ -34,7 +34,7 @@
 
         <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4">
             <Run Text="Phone Number: " />
-            <Run Text="{Binding AreaCode}" />
+            <Run Text="{Binding AreaCode.CodeNum}" />
             <Run Text="-" />
             <Run Text="{Binding Phone}" />
         </TextBlock>

@@ -10,7 +10,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfilePage">
 
-    <Page.Resources>
+    <!--<Page.Resources>
         <local:ImageConverter x:Key="imageConverter" />
     </Page.Resources>
 
@@ -57,5 +57,5 @@
                 <Image Source="Assets/Img.png" />
             </Button.Content>
         </Button>
-    </Grid>
+    </Grid>-->
 </Page>

@@ -1,4 +1,5 @@
 ﻿using LAClient.ServiceReference1;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,7 +14,7 @@ namespace LAClient
 
         private User user;
         private UserList Users;
-
+        private Window updateInsertWindow;
         public Admin()
         {
             InitializeComponent();
@@ -54,7 +55,7 @@ namespace LAClient
             lstView2.ItemsSource = Users;
         }
 
-        public void ForceRefresh()
+        private void forceRefresh()
         {
             lstView2.ItemsSource = null; //force  refresh
             lstView2.ItemsSource = Users;
@@ -63,8 +64,17 @@ namespace LAClient
         private void MenuItem_Update(object sender, RoutedEventArgs e)
         {
             user = lstView2.SelectedItem as User;
-            var updatePU = new ProfilePU(user, this);
-            updatePU.ShowDialog();
+            updateInsertWindow = new Window();
+            updateInsertWindow.Content = new RegisterUpdateUC(user, EndPopUp);
+            updateInsertWindow.ShowDialog();
+            //var updatePU = new ProfilePU(user, this);
+            //updatePU.ShowDialog();
+        }
+
+        private void EndPopUp(object sender, EventArgs e)
+        {
+            updateInsertWindow.Close();
+            forceRefresh();
         }
 
         private void MenuItem_Friends(object sender, RoutedEventArgs e)
@@ -76,8 +86,11 @@ namespace LAClient
 
         private void InsertBttn_Click(object sender, RoutedEventArgs e)
         {
-            RegisterPU registerPU = new RegisterPU(this);
-            registerPU.ShowDialog();
+            updateInsertWindow = new Window();
+            updateInsertWindow.Content = new RegisterUpdateUC(EndPopUp);
+            updateInsertWindow.ShowDialog();
+            //RegisterPU registerPU = new RegisterPU(this);
+            //registerPU.ShowDialog();
         }
 
         //private void Button_Click1(object sender, RoutedEventArgs e)

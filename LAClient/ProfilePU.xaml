@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LAClient"
         mc:Ignorable="d"
         Title="ProfilePU" Height="450" Width="800">
-    <Window.Resources>
+    <!--<Window.Resources>
         <local:ImageConverter x:Key="imageConverter" />
     </Window.Resources>
 
@@ -53,5 +53,5 @@
                 <Image Source="Assets/Img.png" />
             </Button.Content>
         </Button>
-    </Grid>
+    </Grid>-->
 </Window>

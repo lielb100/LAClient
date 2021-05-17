@@ -19,7 +19,6 @@ namespace LAClient
 
         public MainPage(User user) : this()
         {
-            //   InitializeComponent();
             currentUser = user;
         }
 

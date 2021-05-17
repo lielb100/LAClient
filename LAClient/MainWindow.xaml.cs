@@ -11,5 +11,18 @@ namespace LAClient
         {
             InitializeComponent();
         }
+        private void MyFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            if (e.Content is MainPage)
+            {
+                this.Width = 1000;
+                this.Height = 600;
+            }
+            else
+            {
+                this.Width = 800;
+                this.Height = 450;
+            }
+        }
     }
 }

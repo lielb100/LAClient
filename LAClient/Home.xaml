@@ -8,12 +8,13 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Home">
 
-    <Grid Background="#303030">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <!--<Button Content="Activate" HorizontalAlignment="Left" Name="activebttn" Margin="314,42,0,0" VerticalAlignment="Top" Width="152" Height="111" Click="Activebttn_Click" />-->
-        <!--<Button Content="X" FontSize="15pt" Name="exit" HorizontalAlignment="Left" Margin="663,91,0,0" VerticalAlignment="Top" Width="43" Height="32" Click="Exit_Click" />-->
-        <Frame Source="Admin.xaml" x:Name="frame" Content="Frame" />
+    <Grid >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF1263DA" Offset="0"/>
+                <GradientStop Color="#FF92D4F1" Offset="0.859"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image Source="/Assets/HomeScreen.jpeg" />
     </Grid>
 </Page>

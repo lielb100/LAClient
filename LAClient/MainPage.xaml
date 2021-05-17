@@ -13,7 +13,13 @@
         <local:BooleanToVisibilityConverter x:Key="visibleConverter" />
     </Page.Resources>
 
-    <Grid Background="#303030">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF1263DA" Offset="0"/>
+                <GradientStop Color="#FF92D4F1" Offset="0.859"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
 
             <ColumnDefinition Width="Auto" />
@@ -28,7 +34,7 @@
             <HamburgerMenu:HamburgerMenu.Content>
                 <HamburgerMenu:HamburgerMenuItem x:Name="Dummy" Text="Dummy"  Visibility="Collapsed" />
                 <HamburgerMenu:HamburgerMenuItem Icon="Assets/home.png" Text="Home"  x:Name="HomeOne" Selected="HomeOne_Selected" />
-                <HamburgerMenu:HamburgerMenuItem Icon="Assets/search.png" Text="Search" x:Name="AdminOne" Selected="AdminOne_Selected" />
+                <HamburgerMenu:HamburgerMenuItem Icon="Assets/search.png" Text="Admin" x:Name="AdminOne" Selected="AdminOne_Selected" Visibility="{Binding CurrentUser.Manager, Converter={StaticResource visibleConverter}}"/>
                 <HamburgerMenu:HamburgerMenuItem Icon="Assets/favorite.png" Text="Likes"   x:Name="FriendsOne" Selected="FriendsOne_Selected" />
                 <HamburgerMenu:HamburgerMenuItem Icon="Assets/person.png" Text="Profile" x:Name="ProfileOne" Selected="ProfileOne_Selected" ToolTip="Profile" />
                 <HamburgerMenu:HamburgerMenuItem  x:Name="Backward" Icon="Assets/Left.png"  Text="Backward" ToolTip="Backward"  Selected="HamburgerMenuItem_Selected_3" />

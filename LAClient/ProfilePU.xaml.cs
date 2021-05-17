@@ -9,12 +9,12 @@ namespace LAClient
     /// </summary>
     public partial class ProfilePU : Window
     {
-        private UserImageDC xx;
-        private Service1Client sr;
-        private PreferenceList plist;
-        private SexList slist;
-        private AreaCodeList alist;
-        private Admin admin;
+        //private UserImageDC xx;
+        //private Service1Client sr;
+        //private PreferenceList plist;
+        //private SexList slist;
+        //private AreaCodeList alist;
+        //private Admin admin;
 
 
         public ProfilePU()
@@ -22,72 +22,80 @@ namespace LAClient
             InitializeComponent();
         }
 
-        public ProfilePU(User UpdateUser, Admin father) : this()
+        public ProfilePU(User UpdateUser) : this()
         {
-            admin = father;
-            sr = new Service1Client();
-            xx = new UserImageDC { TheImage = UpdateUser.Image, TheUser = UpdateUser };
-
-            slist = sr.GetAllSexes();
-            SexBox.ItemsSource = slist;
-            plist = sr.GetAllPreferences();
-            PreferenceBox.ItemsSource = plist;
-            alist = sr.GetAllAreaCodes();
-            AreaCodeBox.ItemsSource = alist;
-
-            this.DataContext = xx;
-            SexBox.SelectedItem = xx.TheUser.Sex;
-            PreferenceBox.SelectedItem = xx.TheUser.Preference;
+            this.Content = new RegisterUpdateUC();
         }
 
-        private void forceRefresh()
+        private void EndPopUp()
         {
-            this.DataContext = null;
-            this.DataContext = xx;
+            this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string msg = string.Empty;
-            if (!ValidatorHelper.IsValidEmail(xx.TheUser.Email)) msg += "Email Is Not Valid\n";
-            if (!ValidatorHelper.IsValidPassword(xx.TheUser.Password)) msg += "Password Is Not Valid\n";
-            if (!ValidatorHelper.IsValidPhone(xx.TheUser.Phone)) msg += "Phone Number Is Not Valid";
 
-            if (msg != string.Empty)
-            {
-                MessageBox.Show(msg);
-                return;
-            }
-            ImageUtils.SendImage(xx.TheImage);
-            xx.TheUser.Image = xx.TheImage;
-            xx.TheUser.Sex = SexBox.SelectedItem as Sex;
-            xx.TheUser.Preference = PreferenceBox.SelectedItem as Preference;
-            if (sr.UpdateUser(xx.TheUser) != null)
-            {
-                this.Close();
-                admin.ForceRefresh();
-            }
-            else
-            {
-                MessageBox.Show("Can't Update yet");
-            }
-        }
 
-        private void SexBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-        }
+        //    admin = father;
+        //    sr = new Service1Client();
+        //    xx = new UserImageDC { TheImage = UpdateUser.Image, TheUser = UpdateUser };
 
-        private void PreBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-        }
+        //    slist = sr.GetAllSexes();
+        //    SexBox.ItemsSource = slist;
+        //    plist = sr.GetAllPreferences();
+        //    PreferenceBox.ItemsSource = plist;
+        //    alist = sr.GetAllAreaCodes();
+        //    AreaCodeBox.ItemsSource = alist;
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            string newFile = ImageUtils.UploadImage_Dlg();
-            if (newFile != null)
-            {
-                xx.TheImage = newFile;
-            }
-        }
+        //    this.DataContext = xx;
+        //    SexBox.SelectedItem = xx.TheUser.Sex;
+        //    PreferenceBox.SelectedItem = xx.TheUser.Preference;
+        //}
+
+        //private void forceRefresh()
+        //{
+        //    this.DataContext = null;
+        //    this.DataContext = xx;
+        //}
+
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    string msg = string.Empty;
+        //    if (!ValidatorHelper.IsValidPhone(xx.TheUser.Phone)) msg += "Phone Number Is Not Valid";
+
+        //    if (msg != string.Empty)
+        //    {
+        //        MessageBox.Show(msg);
+        //        return;
+        //    }
+        //    ImageUtils.SendImage(xx.TheImage);
+        //    xx.TheUser.Image = xx.TheImage;
+        //    xx.TheUser.Sex = SexBox.SelectedItem as Sex;
+        //    xx.TheUser.Preference = PreferenceBox.SelectedItem as Preference;
+        //    if (sr.UpdateUser(xx.TheUser) != null)
+        //    {                
+        //        admin.ForceRefresh();
+        //        this.Close();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Can't Update yet");
+        //    }
+        //}
+
+        //private void SexBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //}
+
+        //private void PreBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //}
+
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    string newFile = ImageUtils.UploadImage_Dlg();
+        //    if (newFile != null)
+        //    {
+        //        xx.TheImage = newFile;
+        //    }
+        //}
     }
 }
