@@ -1,4 +1,5 @@
 ﻿using LAClient.ServiceReference1;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -62,6 +63,17 @@ namespace LAClient
         private void ProfileOne_Selected(object sender, RoutedEventArgs e)
         {
             myFrame.Navigate(new ProfilePage());
+        }
+
+        private void RequestsOne_Selected(object sender, RoutedEventArgs e)
+        {
+            myFrame.Navigate(new Requests());
+        }
+
+        private void LogoutOne_Selected(object sender, RoutedEventArgs e)
+        {
+            currentUser = null;
+            MainWindow.MainFrame.Source = new Uri("LoginPage.xaml",UriKind.Relative);
         }
     }
 }

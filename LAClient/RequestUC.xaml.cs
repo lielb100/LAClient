@@ -1,4 +1,5 @@
 ﻿using LAClient.ServiceReference1;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,22 +15,25 @@ namespace LAClient
         private User friend;
 
         public User Friend { get => friend; set => friend = value; }
+        private event EventHandler refresh;
 
-        public RequestUC()
+        private RequestUC()
         {
             InitializeComponent();
         }
 
-        public RequestUC(User friends) : this()
+        public RequestUC(User friends, EventHandler _refresh) : this()
         {
-            // InitializeComponent()
             this.friend = friends;
             this.DataContext = friend;
+            this.refresh = _refresh;
+
         }
 
         private void ApproveButton_Click(object sender, RoutedEventArgs e)
         {
             sc.Friend(MainPage.CurrentUser, friend);
+            refresh(this, null);
         }
 
         private void ShowMeetings_Click(object sender, RoutedEventArgs e)
@@ -41,12 +45,12 @@ namespace LAClient
         private void IgnoreButton_Click(object sender, RoutedEventArgs e)
         {
             sc.DeclineRequest(MainPage.CurrentUser, friend);
+            refresh(this, null);
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ImagePU ipu = new ImagePU();
-            ipu.Friend = friend;
+            ImagePU ipu = new ImagePU(friend.Image);
             ipu.ShowDialog();
         }
     }

@@ -11,36 +11,6 @@ namespace LAClient
     /// </summary>
     public partial class RegisterUpdateUC : UserControl
     {
-        private UserImageDC dc;
-        private Service1Client sc;
-        private PreferenceList plist;
-        private SexList slist;
-        private AreaCodeList alist;
-        private Admin admin;
-
-        private NavigationService nav;
-        private event EventHandler activateChange;
-
-        public RegisterUpdateUC()
-        {
-            InitializeComponent();
-            sc = new Service1Client();
-            dc = new UserImageDC()
-            {
-                TheUser = new User(),
-                TheImage = "",
-            };
-            slist = sc.GetAllSexes();
-            SexBox.ItemsSource = slist;
-            plist = sc.GetAllPreferences();
-            PreferenceBox.ItemsSource = plist;
-            alist = sc.GetAllAreaCodes();
-            AreaCodeBox.ItemsSource = alist;
-
-            this.DataContext = dc;
-            DateOfBirthPicker.DisplayDateStart = DateTime.Now.AddYears(-18);
-            DateOfBirthPicker.DisplayDateEnd = DateTime.Now.AddYears(-120);
-        }
         #region Register
 
         #region Helpers
@@ -51,12 +21,13 @@ namespace LAClient
             if (!ValidatorHelper.IsValidEmail(dc.TheUser.Email)) msg += "Email Is Not Valid\n";
             if (!ValidatorHelper.IsValidPassword(dc.TheUser.Password)) msg += "Password Is Not Valid\n";
             if (!ValidatorHelper.IsValidPhone(dc.TheUser.Phone)) msg += "Phone Number Is Not Valid\n";
-            if (dc.TheUser.Fname == null || dc.TheUser.Fname.Length <= 1) msg += "First Name Is Not Valid!\n";
-            if (dc.TheUser.Lname == null || dc.TheUser.Lname.Length <= 1) msg += "Last Name Is Not Valid!\n";
-            if (dc.TheUser.Info == null || dc.TheUser.Info.Length <= 1) msg += "Info Is Not Valid!\n";
+            if (dc.TheUser.Fname == null || dc.TheUser.Fname.Length <= 1 || ValidatorHelper.HasComma(dc.TheUser.Fname)) msg += "First Name Is Not Valid!\n";
+            if (dc.TheUser.Lname == null || dc.TheUser.Lname.Length <= 1 || ValidatorHelper.HasComma(dc.TheUser.Lname)) msg += "Last Name Is Not Valid!\n";
+            if (dc.TheUser.Info == null || dc.TheUser.Info.Length <= 1 || ValidatorHelper.HasComma(dc.TheUser.Info)) msg += "Info Is Not Valid!\n";
             if (dc.TheUser.Sex == null) msg += "Sex Is Not Valid!\n";
             if (dc.TheUser.Preference == null) msg += "Preference Is Not Valid!\n";
             if (dc.TheUser.AreaCode == null) msg += "Area Code Is Not Valid!\n";
+            if (dc.TheUser.Image == null || dc.TheUser.Image.Length <= 1) msg += "Image Is Not Valid";
 
             return msg;
         }
@@ -64,18 +35,18 @@ namespace LAClient
         #endregion Helpers
 
         #region RegisterPage
+
         /// <summary>
         /// new instance of Register Page
         /// </summary>
         /// <param name="nav"></param>
-        public RegisterUpdateUC(NavigationService nav):this()
+        public RegisterUpdateUC(NavigationService nav) : this()
         {
             FinishBttn.Click += FinishBttn_Click_RegisterPage;
             this.nav = nav;
             FinishBttn.Content = "Create new account";
             H1.Text = "Register";
             Return.Visibility = Visibility.Visible;
-
         }
 
         private void FinishBttn_Click_RegisterPage(object sender, RoutedEventArgs e)
@@ -90,6 +61,7 @@ namespace LAClient
             if (sc.RegiserUser(dc.TheUser) != null)
             {
                 MessageBox.Show("Successful!", "Welcome!");
+                ImageUtils.SendImage(dc.TheImage);
                 nav.Navigate(new MainPage(dc.TheUser));
             }
             else
@@ -100,11 +72,13 @@ namespace LAClient
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
-            if (nav.CanGoBack) nav.GoBack();
+            nav.Navigate(new LoginPage());
         }
+
         #endregion RegisterPage
 
         #region RegisterPU
+
         /// <summary>
         /// new instance of Register Pop Up
         /// </summary>
@@ -126,9 +100,9 @@ namespace LAClient
                 MessageBox.Show(msg);
                 return;
             }
-            ImageUtils.SendImage(dc.TheImage);
-            if(sc.RegiserUser(dc.TheUser)!=null)
+            if (sc.RegiserUser(dc.TheUser) != null)
             {
+                ImageUtils.SendImage(dc.TheImage);
                 MessageBox.Show("Successful!", $"User {dc.TheUser.FullName} was created!");
                 activateChange(this, null);
             }
@@ -165,9 +139,9 @@ namespace LAClient
         {
             string msg = string.Empty;
             if (!ValidatorHelper.IsValidPhone(dc.TheUser.Phone)) msg += "Phone Number Is Not Valid\n";
-            if (dc.TheUser.Fname == null || dc.TheUser.Fname.Length <= 1) msg += "First Name Is Not Valid!\n";
-            if (dc.TheUser.Lname == null || dc.TheUser.Lname.Length <= 1) msg += "Last Name Is Not Valid!\n";
-            if (dc.TheUser.Info == null || dc.TheUser.Info.Length <= 1) msg += "Info Is Not Valid!\n";
+            if (dc.TheUser.Fname == null || dc.TheUser.Fname.Length <= 1 || ValidatorHelper.HasComma(dc.TheUser.Fname)) msg += "First Name Is Not Valid!\n";
+            if (dc.TheUser.Lname == null || dc.TheUser.Lname.Length <= 1 || ValidatorHelper.HasComma(dc.TheUser.Lname)) msg += "Last Name Is Not Valid!\n";
+            if (dc.TheUser.Info == null || dc.TheUser.Info.Length <= 1 || ValidatorHelper.HasComma(dc.TheUser.Info)) msg += "Info Is Not Valid!\n";
             if (dc.TheUser.Sex == null) msg += "Sex Is Not Valid!\n";
             if (dc.TheUser.Preference == null) msg += "Preference Is Not Valid!\n";
             if (dc.TheUser.AreaCode == null) msg += "Area Code Is Not Valid!\n";
@@ -192,6 +166,9 @@ namespace LAClient
             dc.TheUser = UpdateUser;
             dc.TheImage = UpdateUser.Image;
             H1.Text = $"Edit {dc.TheUser.FullName}";
+            dc.TheUser.Sex = slist.Find(item => item.ID == dc.TheUser.Sex.ID);
+            dc.TheUser.AreaCode = alist.Find(item => item.ID == dc.TheUser.AreaCode.ID);
+            dc.TheUser.Preference = plist.Find(item => item.ID == dc.TheUser.Preference.ID);
             ChangeLayoutForProfile();
         }
 
@@ -204,10 +181,10 @@ namespace LAClient
                 MessageBox.Show(msg);
                 return;
             }
-            ImageUtils.SendImage(dc.TheImage);
 
             if (sc.UpdateUser(dc.TheUser) != null)
             {
+                ImageUtils.SendImage(dc.TheImage);
                 activateChange(this, null);
             }
             else
@@ -232,6 +209,9 @@ namespace LAClient
             dc.TheUser = UpdateUser;
             dc.TheImage = UpdateUser.Image;
             H1.Text = "Profile";
+            dc.TheUser.Sex = slist.Find(item => item.ID == dc.TheUser.Sex.ID);
+            dc.TheUser.AreaCode = alist.Find(item => item.ID == dc.TheUser.AreaCode.ID);
+            dc.TheUser.Preference = plist.Find(item => item.ID == dc.TheUser.Preference.ID);
             ChangeLayoutForProfile();
         }
 
@@ -247,6 +227,7 @@ namespace LAClient
             if (sc.UpdateUser(dc.TheUser) != null)
             {
                 MainPage.CurrentUser = dc.TheUser;
+                ImageUtils.SendImage(dc.TheImage);
                 DataContext = null;
                 DataContext = this;
             }
@@ -260,6 +241,38 @@ namespace LAClient
 
         #endregion Profile
 
+        #region General
+
+        private UserImageDC dc;
+        private Service1Client sc;
+        private PreferenceList plist;
+        private SexList slist;
+        private AreaCodeList alist;
+        private NavigationService nav;
+
+        private event EventHandler activateChange;
+
+        private RegisterUpdateUC()
+        {
+            InitializeComponent();
+            sc = new Service1Client();
+            dc = new UserImageDC()
+            {
+                TheUser = new User(),
+                TheImage = "",
+            };
+            slist = sc.GetAllSexes();
+            SexBox.ItemsSource = slist;
+            plist = sc.GetAllPreferences();
+            PreferenceBox.ItemsSource = plist;
+            alist = sc.GetAllAreaCodes();
+            AreaCodeBox.ItemsSource = alist;
+
+            this.DataContext = dc;
+            DateOfBirthPicker.DisplayDateStart = DateTime.Now.AddYears(-18);
+            DateOfBirthPicker.DisplayDateEnd = DateTime.Now.AddYears(-120);
+        }
+
         private void PopulateUser()
         {
             dc.TheUser.Image = dc.TheImage;
@@ -272,6 +285,7 @@ namespace LAClient
             dc.TheUser.Seen = true;
             dc.TheUser.IsVer = true;
         }
+
         private void ImageBttn_Click(object sender, RoutedEventArgs e)
         {
             string newFile = ImageUtils.UploadImage_Dlg();
@@ -280,5 +294,14 @@ namespace LAClient
                 dc.TheImage = newFile;
             }
         }
+
+        private void ServerImage_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var imagePopUp = new ImagePU(dc.TheImage);
+            imagePopUp.ShowDialog();
+        }
+        #endregion General
+
+
     }
 }

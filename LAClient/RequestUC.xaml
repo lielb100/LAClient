@@ -8,6 +8,9 @@
     <UserControl.Resources>
         <local:ImageConverter x:Key="imageConverter" />
     </UserControl.Resources>
+    <UserControl.Margin>
+        10,5
+    </UserControl.Margin>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -23,14 +26,19 @@
         </Grid.RowDefinitions>
         <Image MouseDown="Image_MouseDown" Source="{Binding Image, Converter={StaticResource imageConverter}}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Margin="20, 0" />
 
-        <TextBlock Text="Name: " Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" />
 
-        <TextBlock Text="{Binding FullName}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" />
+        <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" >
+            <Run Text="Name: "/>
+            <Run Text="{Binding FullName}"/>
+        </TextBlock>
 
-        <TextBlock Text="{Binding Age}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <Run Text="Age: "/>
+            <Run Text="{Binding Age}"/>
+        </TextBlock>
 
-        <Button x:Name="ApproveButton" Content="Approve" Background="Green" Click="ApproveButton_Click" Grid.Row="4" Grid.ColumnSpan="1" Grid.Column="0" />
-        <Button x:Name="IgnoreButton" Content="Ignore" Background="Red" Click="IgnoreButton_Click" Grid.Row="4" Grid.ColumnSpan="1" Grid.Column="1" />
-        <Button x:Name="ShowMeetings" Content="Meetings" Click="ShowMeetings_Click" Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="0" />
+        <Button x:Name="ApproveButton" Content="Approve" Background="Green" Click="ApproveButton_Click" Grid.Row="3" Grid.ColumnSpan="1" Grid.Column="0" />
+        <Button x:Name="IgnoreButton" Content="Decline" Background="Red" Click="IgnoreButton_Click" Grid.Row="3" Grid.ColumnSpan="1" Grid.Column="1" />
+        <Button x:Name="ShowMeetings" Content="Meetings" Click="ShowMeetings_Click" Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" />
     </Grid>
 </UserControl>

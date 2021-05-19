@@ -1,6 +1,4 @@
-﻿using LAClient.ServiceReference1;
-using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
@@ -13,7 +11,13 @@ namespace LAClient
     {
         public RegisterPage()
         {
-            var nav = NavigationService.GetNavigationService(this);
+            InitializeComponent();
+            
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            NavigationService nav = NavigationService.GetNavigationService(this);
             this.Content = new RegisterUpdateUC(nav);
         }
     }

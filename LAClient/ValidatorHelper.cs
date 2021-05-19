@@ -7,11 +7,12 @@ namespace LAClient
     {
         public static bool IsValidPassword(string password)
         {
+            if (password == null) return false;
             Regex hasNumber = new Regex(@"[0-9]+");
             Regex hasUpperChar = new Regex(@"[A-Z]+");
             Regex hasMinimum8Chars = new Regex(@".{8,}");
 
-             return hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password) && hasMinimum8Chars.IsMatch(password);
+             return  hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password) && hasMinimum8Chars.IsMatch(password);
 
         }
 
@@ -33,6 +34,11 @@ namespace LAClient
         {
             if (phone == null) return false;
             return phone.Length == 7;
+        }
+
+        public static bool HasComma(string text)
+        {
+            return text.Contains("'");
         }
     }
 }

@@ -8,19 +8,19 @@ namespace LAClient
     /// </summary>
     public partial class ImagePU : Window
     {
-        private User friend;
-        public User Friend { get => friend; set => friend = value; }
+        private string image;
+        public string Image { get => image; set => image = value; }
 
         public ImagePU()
         {
             InitializeComponent();
         }
 
-        public ImagePU(User friends) : this()
+        public ImagePU(string _image) : this()
         {
             // InitializeComponent();
-            this.friend = friends;
-            this.DataContext = friend;
+            this.image = _image;
+            this.DataContext = image;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

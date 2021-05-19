@@ -11,10 +11,10 @@ namespace LAClient
     public partial class Admin : Page
     {
         private Service1Client sr = new Service1Client();
-
+        private Window updateInsertWindow;
         private User user;
         private UserList Users;
-        private Window updateInsertWindow;
+
         public Admin()
         {
             InitializeComponent();
@@ -29,21 +29,24 @@ namespace LAClient
             txt.Content = Users.Count.ToString();
         }
 
-        //private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    user = (User)lstView2.SelectedItem;
-        //    grid.DataContext = user;
-        //}
+        private void EndPopUp(object sender, EventArgs e)
+        {
+            updateInsertWindow.Close();
+            forceRefresh();
+        }
 
-        //private void MenuItem_Verify(object sender, RoutedEventArgs e)
-        //{
-        //    user = lstView2.SelectedItem as User;
+        private void forceRefresh()
+        {
+            lstView2.ItemsSource = null; //force  refresh
+            lstView2.ItemsSource = Users;
+        }
 
-        //    //adminframe.Navigate(new VerAdmin(user, 1));
-        //    //LessonsList lesson = dB.SelectByStudent(student.Id);
-        //    //list.ItemsSource = lesson;
-        //    //txt.Content = lesson.Count.ToString();
-        //}
+        private void InsertBttn_Click(object sender, RoutedEventArgs e)
+        {
+            updateInsertWindow = new Window();
+            updateInsertWindow.Content = new RegisterUpdateUC(EndPopUp);
+            updateInsertWindow.ShowDialog();
+        }
 
         private void MenuItem_Delete(object sender, RoutedEventArgs e)
         {
@@ -55,28 +58,6 @@ namespace LAClient
             lstView2.ItemsSource = Users;
         }
 
-        private void forceRefresh()
-        {
-            lstView2.ItemsSource = null; //force  refresh
-            lstView2.ItemsSource = Users;
-        }
-
-        private void MenuItem_Update(object sender, RoutedEventArgs e)
-        {
-            user = lstView2.SelectedItem as User;
-            updateInsertWindow = new Window();
-            updateInsertWindow.Content = new RegisterUpdateUC(user, EndPopUp);
-            updateInsertWindow.ShowDialog();
-            //var updatePU = new ProfilePU(user, this);
-            //updatePU.ShowDialog();
-        }
-
-        private void EndPopUp(object sender, EventArgs e)
-        {
-            updateInsertWindow.Close();
-            forceRefresh();
-        }
-
         private void MenuItem_Friends(object sender, RoutedEventArgs e)
         {
             User user = lstView2.SelectedItem as User;
@@ -84,32 +65,12 @@ namespace LAClient
             smpu.ShowDialog();
         }
 
-        private void InsertBttn_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_Update(object sender, RoutedEventArgs e)
         {
+            user = lstView2.SelectedItem as User;
             updateInsertWindow = new Window();
-            updateInsertWindow.Content = new RegisterUpdateUC(EndPopUp);
+            updateInsertWindow.Content = new RegisterUpdateUC(ObjectCopier.CloneJson(user), EndPopUp);
             updateInsertWindow.ShowDialog();
-            //RegisterPU registerPU = new RegisterPU(this);
-            //registerPU.ShowDialog();
         }
-
-        //private void Button_Click1(object sender, RoutedEventArgs e)
-        //{
-        //    adminframe.Navigate(new NonVer());
-        //}
-        //private static User veruser;
-        //public static User Veruser
-
-        //{
-        //    get
-        //    {
-        //        return veruser;
-        //    }
-
-        //    set
-        //    {
-        //        veruser = value;
-        //    }
-        //}
     }
 }

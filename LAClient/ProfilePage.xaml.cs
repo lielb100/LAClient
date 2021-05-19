@@ -1,7 +1,4 @@
-﻿using LAClient.ServiceReference1;
-using System.Windows;
-using System;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace LAClient
 {
@@ -12,7 +9,7 @@ namespace LAClient
     {
         public ProfilePage()
         {
-            this.Content = new RegisterUpdateUC(MainPage.CurrentUser);
+            this.Content = new RegisterUpdateUC(ObjectCopier.CloneJson(MainPage.CurrentUser));
         }
     }
 }
