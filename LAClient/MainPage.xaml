@@ -34,7 +34,7 @@
             <HamburgerMenu:HamburgerMenu.Content>
                 <HamburgerMenu:HamburgerMenuItem Icon="Assets/home.png" Text="Home"  x:Name="HomeOne" 
                                                  Selected="HomeOne_Selected" ToolTip="Home"/>
-                <HamburgerMenu:HamburgerMenuItem Icon="Assets/list.png" Text="Admin" x:Name="AdminOne" 
+                <HamburgerMenu:HamburgerMenuItem Icon="Assets/list.png" Text="Admin" x:Name="AdminOne" ToolTip="Admin"
                                                  Selected="AdminOne_Selected" Visibility="{Binding CurrentUser.Manager, Converter={StaticResource visibleConverter}}"/>
                 <HamburgerMenu:HamburgerMenuItem Icon="Assets/favorite.png" Text="Friends" ToolTip="Friends" x:Name="FriendsOne" 
                                                  Selected="FriendsOne_Selected" />

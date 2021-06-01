@@ -8,10 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LAClient.ServiceReference1
-{
-
-
+namespace LAClient.ServiceReference1 {
+    using System.Runtime.Serialization;
+    using System;
+    
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.CollectionDataContractAttribute(Name="UserList", Namespace="http://schemas.datacontract.org/2004/07/Model", ItemName="User")]
@@ -911,6 +912,18 @@ namespace LAClient.ServiceReference1
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUserByGuid", ReplyAction="http://tempuri.org/IService1/GetUserByGuidResponse")]
         System.Threading.Tasks.Task<LAClient.ServiceReference1.User> GetUserByGuidAsync(System.Guid did);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CheckPassword", ReplyAction="http://tempuri.org/IService1/CheckPasswordResponse")]
+        bool CheckPassword(string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CheckPassword", ReplyAction="http://tempuri.org/IService1/CheckPasswordResponse")]
+        System.Threading.Tasks.Task<bool> CheckPasswordAsync(string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CheckEmail", ReplyAction="http://tempuri.org/IService1/CheckEmailResponse")]
+        bool CheckEmail(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CheckEmail", ReplyAction="http://tempuri.org/IService1/CheckEmailResponse")]
+        System.Threading.Tasks.Task<bool> CheckEmailAsync(string email);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RegiserUser", ReplyAction="http://tempuri.org/IService1/RegiserUserResponse")]
         LAClient.ServiceReference1.User RegiserUser(LAClient.ServiceReference1.User us);
         
@@ -1113,6 +1126,22 @@ namespace LAClient.ServiceReference1
         
         public System.Threading.Tasks.Task<LAClient.ServiceReference1.User> GetUserByGuidAsync(System.Guid did) {
             return base.Channel.GetUserByGuidAsync(did);
+        }
+        
+        public bool CheckPassword(string password) {
+            return base.Channel.CheckPassword(password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckPasswordAsync(string password) {
+            return base.Channel.CheckPasswordAsync(password);
+        }
+        
+        public bool CheckEmail(string email) {
+            return base.Channel.CheckEmail(email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckEmailAsync(string email) {
+            return base.Channel.CheckEmailAsync(email);
         }
         
         public LAClient.ServiceReference1.User RegiserUser(LAClient.ServiceReference1.User us) {

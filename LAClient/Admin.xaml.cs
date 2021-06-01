@@ -1,7 +1,9 @@
 ﻿using LAClient.ServiceReference1;
 using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace LAClient
 {
@@ -13,7 +15,9 @@ namespace LAClient
         private Service1Client sr = new Service1Client();
         private Window updateInsertWindow;
         private User user;
-        private UserList Users;
+        private ObservableCollection<User> users;
+        public ObservableCollection<User> Users { get => users; set => users = value; }
+
 
         public Admin()
         {
@@ -22,11 +26,14 @@ namespace LAClient
             lstView2.ItemsSource = null; //force  refresh
         }
 
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Users = sr.SelectAllUsers();
-            lstView2.ItemsSource = Users;
-            txt.Content = Users.Count.ToString();
+            users = new ObservableCollection<User>( sr.SelectAllUsers());
+            lstView2.ItemsSource = users;
+            //Binding binding = new Binding { Converter = new IntToString(), Path = new PropertyPath(users.Count) };
+            //txt.SetBinding(ContentProperty, binding);
+            txt.Content = users.Count;
         }
 
         private void EndPopUp(object sender, EventArgs e)
@@ -38,7 +45,7 @@ namespace LAClient
         private void forceRefresh()
         {
             lstView2.ItemsSource = null; //force  refresh
-            lstView2.ItemsSource = Users;
+            lstView2.ItemsSource = users;
         }
 
         private void InsertBttn_Click(object sender, RoutedEventArgs e)
@@ -52,10 +59,8 @@ namespace LAClient
         {
             User user = lstView2.SelectedItem as User;
             sr.DeleteUser(user);
-            sr.SaveChanges();
             Users.Remove(user);
-            lstView2.ItemsSource = null; //force  refresh
-            lstView2.ItemsSource = Users;
+            forceRefresh();
         }
 
         private void MenuItem_Friends(object sender, RoutedEventArgs e)

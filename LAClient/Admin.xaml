@@ -43,7 +43,5 @@
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
-
-        <Frame x:Name="adminframe" />
     </Grid>
 </Page>

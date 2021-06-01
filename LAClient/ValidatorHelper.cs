@@ -1,5 +1,6 @@
 ﻿using System.Net.Mail;
 using System.Text.RegularExpressions;
+using LAClient.ServiceReference1;
 
 namespace LAClient
 {
@@ -12,7 +13,10 @@ namespace LAClient
             Regex hasUpperChar = new Regex(@"[A-Z]+");
             Regex hasMinimum8Chars = new Regex(@".{8,}");
 
-             return  hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password) && hasMinimum8Chars.IsMatch(password);
+            if (!(hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password) && hasMinimum8Chars.IsMatch(password)))
+                return false;
+            Service1Client sc = new Service1Client();
+            return sc.CheckPassword(password);
 
         }
 
@@ -21,8 +25,9 @@ namespace LAClient
             try
             {
                 MailAddress m = new MailAddress(email);
+                Service1Client sc = new Service1Client();
+                return sc.CheckEmail(email);
                 
-                return true;
             }
             catch
             {
